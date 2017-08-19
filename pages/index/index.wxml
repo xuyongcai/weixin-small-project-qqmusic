@@ -1,0 +1,70 @@
+
+<view class="nav">
+  <text bindtap="navtab" class="{{navcur == index ? 'cur' : ''}}" wx:for="{{navlist}}" data-index="{{index}}">{{item}}</text>
+</view>
+
+
+<view class="bg">
+   <!-- 轮播 -->
+  <view hidden="{{navcur != 0}}">
+    <swiper indicator-dots="{{true}}" circular="{{true}}" autoplay="{{true}}" interval="2000">
+        <swiper-item wx:for="{{slider}}">
+           <image src="{{item.picUrl}}" class="slide-image"/> 
+        </swiper-item>
+    </swiper>
+   <!-- 电台，热门歌单 -->
+    <view class="content_wrap">
+    <!-- 电台 -->
+      <view class="radio_wrap">
+        <text class="list_title">电台</text>
+        <view class="radio_list song_list">
+          <view class="radio_item song_item"  wx:for="{{radioList}}">
+            <image src="{{item.picUrl}}"></image>
+            <text class="item_title song_list_desc">{{item.Ftitle}}</text>
+          </view>
+        </view>
+      </view>
+     <!-- 热门歌单 -->
+      <view class="hot_song_wrap">
+        <text class="list_title">热门歌单</text>
+        <view class="hot_song_list song_list">
+            <view class="hot_song_item song_item"  wx:for="{{songList}}">
+              <image src="{{item.picUrl}}"></image> 
+              <text class="item_title">{{item.songListDesc}}</text>
+              <text class="item_title song_list_author">{{item.songListAuthor}}</text>
+            </view>
+        </view>    
+      </view>
+      <text class="footer">去客户端发现更多好音乐 ></text>
+    </view>
+   
+
+  </view>
+
+
+  <view hidden="{{navcur != 1}}" class="content_wrap">
+    <view class="search_box">
+      <view class="topic_item" bindtap="OpenTopListDetail" data-id="{{item.id}}"  wx:for="{{topList}}">
+        <view class="arrow">></view>
+        <view class="topic_pic left">
+          <image src="{{item.picUrl}}"></image>
+        </view>
+
+        <view class="topic_info right">
+          <text class="title">{{item.topTitle}}</text>
+          <view class="song_info" wx:for="{{item.songList}}">
+            <text class="num gray">{{index+1}}</text>
+            <text class="song_name">{{item.songname}}</text>
+            <text class="singer gray"> - {{item.singername}}</text>
+          </view>     
+        </view>
+
+      </view>
+    </view>
+    <text class="footer">去客户端发现更多好音乐 ></text>
+  </view>
+
+
+  <view hidden="{{navcur != 2}}">3333333</view>
+
+</view>

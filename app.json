@@ -1,0 +1,14 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/song_list/song_list",
+    "pages/play_song/play_song"
+    
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#31c27c",
+    "navigationBarTitleText": "My Music",
+    "navigationBarTextStyle":"#fff"
+  }
+}

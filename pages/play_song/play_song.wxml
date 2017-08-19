@@ -1,0 +1,34 @@
+
+<view class="container">
+  <view class="main_box">
+    <view class="play_header">
+      <image class="header_album" src="{{imgPath}}"></image>
+      <view class="play_header_txt">
+        <text class="song_name">{{songinfo.songname}}</text>
+        <text class="singer">{{songinfo.singer[0].name}}</text>
+      </view>
+      <view class="icon" bindtap="playMusic"></view>
+    </view>
+
+    <view class="lyric">
+      <view class="lyric_box"></view>
+    </view>
+  </view>
+
+  <view class="play_footer">
+    <view class="icon_list icon"></view>
+    <view class="icon_like icon"></view>
+    <view class="control">
+      <view class="start time">{{currentmin<10?'0':''}}{{currentmin}}:{{currentPosition<10?'0':''}}{{currentPosition}}</view>
+      <view class="bar">
+        <view class="bar_child" style="width:{{width}}"></view>
+      </view>
+      <view class="end time">{{totalmin<10?'0':''}}{{totalmin}}:{{duration<10?'0':''}}{{duration}}</view>
+    </view>
+    <view class="download_btn">
+      <!-- <image src=""></image> -->
+      <text class="download_btn_txt">免费下载这首歌</text>
+    </view>
+  </view>
+  <view class="bg_blur" style="background-image: url('{{imgPath}}')"></view>
+</view>
