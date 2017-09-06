@@ -5,13 +5,19 @@
       <image class="header_album" src="{{imgPath}}"></image>
       <view class="play_header_txt">
         <text class="song_name">{{songinfo.songname}}</text>
-        <text class="singer">{{songinfo.singer[0].name}}</text>
+        <view class="singer_box">
+          <text class="singer" wx:for="{{songinfo.singer}}" wx:key="sis">{{item.name}}{{index<songinfo.singer.length-1?" / ":""}}</text>
+        </view>
       </view>
-      <view class="icon" bindtap="playMusic"></view>
+      <view class="icon" bindtap="playMusic"  style="{{imgoff ? 'background-position-y:-338rpx' : 'background-position-y:-405rpx'}}"></view>
     </view>
 
-    <view class="lyric">
-      <view class="lyric_box"></view>
+    <view class="lyric_box">
+      <scroll-view scroll-y scroll-top="{{scrollTop}}" scroll-with-animation="true" style="height: 672rpx;">
+        <block wx:for="{{lyric}}">
+          <text class="{{item.time <= currentPosition && item.endTime > currentPosition ? 'cur':''}}">{{item.clause}}</text>
+        </block>
+      </scroll-view>
     </view>
   </view>
 
@@ -20,15 +26,20 @@
     <view class="icon_like icon"></view>
     <view class="control">
       <view class="start time">{{currentmin<10?'0':''}}{{currentmin}}:{{currentPosition<10?'0':''}}{{currentPosition}}</view>
-      <view class="bar">
-        <view class="bar_child" style="width:{{width}}"></view>
+      <view class="bar_farther"  bindtap="bindtap" bindtouchmove="bartouchmove" bindtouchstart="bartouchstart" bindtouchend="bartouchend">
+        <view class="bar">
+          <view class="bar_child" style="width:{{width}}"></view>
+        </view>
       </view>
-      <view class="end time">{{totalmin<10?'0':''}}{{totalmin}}:{{duration<10?'0':''}}{{duration}}</view>
+      <view class="end time">{{endmin<10?'0':''}}{{endmin}}:{{endsec<10?'0':''}}{{endsec}}</view>
     </view>
     <view class="download_btn">
       <!-- <image src=""></image> -->
-      <text class="download_btn_txt">免费下载这首歌</text>
+      <text class="download_btn_txt" bindtap="downLoadMusic">免费下载这首歌</text>
     </view>
   </view>
-  <view class="bg_blur" style="background-image: url('{{imgPath}}')"></view>
+  <view class="bg_blur">
+    <view class="bg_blur_inner" style="background-image: url('{{imgPath}}')"></view>
+  </view>
+  <view class="bg_mask"></view>
 </view>

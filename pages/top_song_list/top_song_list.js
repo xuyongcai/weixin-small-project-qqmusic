@@ -20,13 +20,19 @@ Page({
     util.topListDetail(id,function (data) {
       // console.log(data)
       var color = data.color.toString(16);
-      // console.log(color)
-      if(color == 0){
-        color = "000";
+      if(color.length == 1){
+        var str = "00";
+        color = str.concat(color);
+      } else if (color.length == 2){
+        var str = "0";
+        color = str.concat(color);
       }
+      // console.log(color)
       that.setData({
-        bgcolor: color,
+        bgcolor: color,   //16进制
+        color: data.color,   //10进制
         topinfo: data.topinfo,
+        pic_album: data.topinfo.pic_album.replace("imgcache.qq.com","y.gtimg.cn"),
         update_time: data.update_time,
         songlist: data.songlist  //列表详细
       })

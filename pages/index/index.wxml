@@ -1,14 +1,15 @@
 
 <view class="nav">
-  <text bindtap="navtab" class="{{navcur == index ? 'cur' : ''}}" wx:for="{{navlist}}" data-index="{{index}}">{{item}}</text>
+  <text bindtap="navtab" class="{{navcur == index ? 'cur' : ''}}" wx:for="{{navlist}}" wx:key="nl" data-index="{{index}}">{{item}}</text>
 </view>
 
 
 <view class="bg">
-   <!-- 轮播 -->
+  <!-- 推荐 -->
   <view hidden="{{navcur != 0}}">
+   <!-- 轮播 -->
     <swiper indicator-dots="{{true}}" circular="{{true}}" autoplay="{{true}}" interval="2000">
-        <swiper-item wx:for="{{slider}}">
+        <swiper-item wx:for="{{slider}}" wx:key="sr">
            <image src="{{item.picUrl}}" class="slide-image"/> 
         </swiper-item>
     </swiper>
@@ -18,8 +19,10 @@
       <view class="radio_wrap">
         <text class="list_title">电台</text>
         <view class="radio_list song_list">
-          <view class="radio_item song_item"  wx:for="{{radioList}}">
-            <image src="{{item.picUrl}}"></image>
+          <view class="radio_item song_item" bindtap="bindRadio" data-radioid="{{item.radioid}}" wx:for="{{radioList}}" wx:key="rl">
+            <image src="{{item.picUrl}}">
+             <image class="play_icon" src="../../images/icon-play.png"></image>
+            </image>
             <text class="item_title song_list_desc">{{item.Ftitle}}</text>
           </view>
         </view>
@@ -28,8 +31,10 @@
       <view class="hot_song_wrap">
         <text class="list_title">热门歌单</text>
         <view class="hot_song_list song_list">
-            <view class="hot_song_item song_item"  wx:for="{{songList}}">
-              <image src="{{item.picUrl}}"></image> 
+            <view class="hot_song_item song_item" data-idhh="{{item.id}}" bindtap="bindHotSongList" wx:for="{{songList}}" wx:key="sl">
+              <image src="{{item.picUrl}}">
+                <image class="play_icon" src="../../images/icon-play.png"></image>
+              </image> 
               <text class="item_title">{{item.songListDesc}}</text>
               <text class="item_title song_list_author">{{item.songListAuthor}}</text>
             </view>
@@ -37,14 +42,13 @@
       </view>
       <text class="footer">去客户端发现更多好音乐 ></text>
     </view>
-   
 
   </view>
 
-
+<!-- 排行榜 -->
   <view hidden="{{navcur != 1}}" class="content_wrap">
-    <view class="search_box">
-      <view class="topic_item" bindtap="OpenTopListDetail" data-id="{{item.id}}"  wx:for="{{topList}}">
+    <view class="toplist_box">
+      <view class="topic_item" bindtap="OpenTopListDetail" data-id="{{item.id}}"  wx:for="{{topList}}" wx:key="tl">
         <view class="arrow">></view>
         <view class="topic_pic left">
           <image src="{{item.picUrl}}"></image>
@@ -52,7 +56,7 @@
 
         <view class="topic_info right">
           <text class="title">{{item.topTitle}}</text>
-          <view class="song_info" wx:for="{{item.songList}}">
+          <view class="song_info" wx:for="{{item.songList}}" wx:key="sl">
             <text class="num gray">{{index+1}}</text>
             <text class="song_name">{{item.songname}}</text>
             <text class="singer gray"> - {{item.singername}}</text>
@@ -64,7 +68,44 @@
     <text class="footer">去客户端发现更多好音乐 ></text>
   </view>
 
+<!-- 搜索 -->
+  <view hidden="{{navcur != 2}}">
+    <view class="search_box"> 
+      <view class="search_inner" style="width:{{searchform ? '75%' : '100%'}}">
+        <icon type="search" />
+        <input type="text" bindinput="bindKeyInput" value="{{searchform ? searchkey : ''}}" bindfocus="startSearch" bindconfirm="searchResult" class="search" placeholder="搜索歌曲、歌单、专辑" />
+      </view>
+      <text class="search_cancel" bindtap="cancelEvent" style="{{searchform ? 'display:block' : 'display:none'}}">取消</text>      
+    </view> 
 
-  <view hidden="{{navcur != 2}}">3333333</view>
+    <view class="hot_keys_box" hidden="{{startSearchOff || searchform}}">
+      <text class="caption">热门搜索</text>
+      <view class="hot_keys">
+        <view class="cur_hot_key">{{special_key}}</view>
+        <view class="hot_key" wx:for="{{hotkey}}" wx:key="hk">{{item.k}}</view>
+      </view>
+    </view>
+
+    <view class="gg_box" hidden="{{startSearchOff || !searchform}}">
+      <view class="gg" bindtap="tapThisLog" data-logid="{{index}}" wx:for="{{loglist}}" wx:key="vl">
+        <text class="clock_icon"></text>
+        <view class="txt">{{item}}</view>
+        <text class="delete_icon" data-logid="{{index}}" catchtap="removeThisLog"></text>
+      </view>
+      <text bindtap="removeAllLogs" class="clearlog">{{loglist!=""?"清除聊天记录":""}}</text>
+    </view>
+
+  <!-- 搜索展示结果 -->
+     <scroll-view bindscrolltolower="scrolltolower" hidden="{{!startSearchOff}}" scroll-y="true" style="height: 990rpx;" class="result_box">
+      <view class="result_item" bindtap="resultDetail" data-resultid="{{index}}" wx:for="{{searchlist}}" wx:key="searl">
+         <view class="result_icon"></view>
+         <view class="result_info">
+           <text class="song_name">{{item.songname}}</text>
+           <text class="singer">{{item.singer[0].name}}</text>
+         </view>
+      </view> 
+    </scroll-view>  
+
+  </view>
 
 </view>

@@ -1,0 +1,43 @@
+<view class="header">
+  <view class="header_focus">
+    <view class="logo"></view>
+    <view class="song_info">
+      <image class="ablum_pic" src="{{album}}"></image>
+      <view class="txt_info">
+        <text class="caption">{{dissname}}</text>
+        <view class="nick_box">
+          <image src="{{headurl}}"></image>
+          <text class="nickname">{{nickname}}</text>
+        </view>
+        <text class="num">播放量：{{visitnum}}万</text>
+      </view>
+    </view>
+    <view class="play_btn" bindtap="bindPlayBtn"><text>播放全部</text></view>
+  </view>
+  <view class="bg_blur">
+    <view class="bg_blur_inner"></view>
+  </view>
+  <view class="bg_mask"></view>
+</view>
+
+<view class="song_list">
+  <view class="list_title">
+    <text class="title_left">歌单 共{{songlist.length}}首</text>
+    <view class="title_right">
+      <text>收藏</text>
+       <image class="icon_like" src="../../images/icon_like.png"></image> 
+    </view>
+  </view>
+  <view class="song_item" bindtap="bindSong" data-index="{{index}}" wx:for="{{songlist}}" wx:key="hsl" wx:for-item="song">
+    <text class="song_name">{{song.title}}</text>
+    <view class="singer_box">
+      <text wx:for="{{song.singer}}" wx:key="ssinger">{{item.name}}{{index<song.singer.length-1?"/":""}}</text>
+      <text> · {{song.album.name}}</text>
+    </view>
+  </view>
+
+  <view class="song_list_desc">
+    <view class="caption">歌单介绍</view>
+    <text class="txt">{{desc}}</text>
+  </view>
+</view>

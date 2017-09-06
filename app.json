@@ -1,14 +1,14 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
-    "pages/song_list/song_list",
-    "pages/play_song/play_song"
-    
+    "pages/top_song_list/top_song_list",
+    "pages/play_song/play_song",
+    "pages/hot_song_list/hot_song_list"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#31c27c",
     "navigationBarTitleText": "My Music",
-    "navigationBarTextStyle":"#fff"
+    "navigationBarTextStyle": "#fff"
   }
 }

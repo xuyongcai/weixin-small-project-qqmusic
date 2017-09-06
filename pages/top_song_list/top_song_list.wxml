@@ -1,0 +1,24 @@
+
+<view class="head_box" style="background-image:url({{pic_album}})">
+    <view class="head_title">
+      <text class="title" style="{{color>14645932?'':'color:#fff'}}">{{topinfo.ListName}}</text>
+      <text class="time" style="{{color>14645932?'':'color:#fff'}}">{{update_time}} 更新</text>
+      <image src="../../images/icon-play.png"></image>
+    </view>
+    <view class="mask" style="{{color>14645932?'background:transparent':''}}"></view>
+    <view class="mask1" style="background: linear-gradient(to bottom,transparent,#{{bgcolor}})"></view> 
+</view>
+
+<view class="song_list" style="background-color:#{{bgcolor}}">
+  <view class="song_item" data-idgg="{{index}}" bindtap="play_song" wx:for="{{songlist}}" wx:key="slist" wx:for-item="song">
+    <text class="num" style="{{color>14645932?'':'color:#fff'}}">{{index+1}}</text>
+    <view class="song_info">
+      <text class="song_name" style="{{color>14645932?'':'color:#fff'}}">{{song.data.songname}}</text>
+      <view class="singer" >
+      <!-- {{song.data.singer[0].name}} · {{song.data.albumname}} · {{song.data.albumdesc}} -->
+        <text wx:for="{{song.data.singer}}" wx:key="sn">{{item.name}}{{index<song.data.singer.length-1?" / ":""}}</text>
+        <text>{{song.data.albumname?" · ":""}}{{song.data.albumname}}{{song.data.albumdesc?" · ":""}}{{song.data.albumdesc}}</text>
+      </view>
+    </view>
+  </view>
+</view>

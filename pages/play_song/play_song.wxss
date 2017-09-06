@@ -1,4 +1,4 @@
-
+/* 背景 */
  .bg_blur{
     position: absolute;
     top: 0;
@@ -6,13 +6,32 @@
     left: 0;
     z-index: 1;
     width: 100%;
+    overflow: hidden;     
+} 
+ .bg_blur  .bg_blur_inner{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
     background-size: cover;
-    background-position: bottom center;
+    background-position:bottom center;
     /* 模糊 */
     filter: blur(30rpx);
-    transform: scale(1.15);
-
-} 
+    transform: scale(1.15); 
+ }
+.bg_mask{
+    opacity: 0.6;
+    position: absolute;
+    left: 0;
+    /* 高度100%  top bottom */
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    width: 100%;
+    background-color: #000;
+}
 
 /* .main_box{
   display: flex;
@@ -25,7 +44,7 @@
   display: flex;
   background: rgba(0, 0, 0, 0.5);
   padding: 30rpx 160rpx 30rpx 30rpx;
-  z-index: 2;
+  z-index: 3;
   box-sizing: border-box;
 }
 
@@ -33,6 +52,10 @@
   width: 160rpx;
   height: 160rpx;
   /* background-color: pink; */
+  /* 默认图片 */
+  background-image: url("../../images/icon-music.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
 }
  .play_header .play_header_txt{
   flex: auto;
@@ -44,18 +67,20 @@
   -webkit-box-pack: center;
   
 }
- .play_header .play_header_txt text{
-  display: block;
-  color: #fff;
-}
  .play_header .play_header_txt .song_name{
+  display: block;
   font-size: 38rpx;
   line-height: 57rpx;
+  color: #fff;
 }
- .play_header .play_header_txt .singer{
+ .play_header .play_header_txt .singer_box{
   font-size: 30rpx;
-  color: #ffffff
-}
+  color: #fff;
+  /* 溢出省略 */
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+ }
 .main_box .play_header .icon{
 position:absolute;
 width:88rpx;
@@ -64,20 +89,20 @@ right:60rpx;
 top:50%;
 margin-top:-45rpx;
 border-radius:50%;
-border:3rpx solid #fff;
+border:4rpx solid #fff;
 background-image:url("../../images/sprite_play.png");
-/*点击后  y:-340rpx */
-background-position:34rpx -402rpx;
+/*点击后  y:-338rpx */
+background-position:34rpx -405rpx;
 background-size:110%;
 background-repeat: no-repeat;
 
 }
 
 /* 中间 */
-.main_box .lyric{
-  background-color: pink;
+.main_box .lyric_box{
+  /* background-color: pink; */
   position: relative;
-  z-index: 2; 
+  z-index: 3; 
   width: 100%;
   height: 610rpx;
   font-size: 24rpx;
@@ -89,7 +114,7 @@ background-repeat: no-repeat;
   position: absolute;
   width: 100%;
   bottom: 0rpx;
-  z-index: 3;
+  z-index: 4;
   
 }
 .control{
@@ -102,12 +127,18 @@ background-repeat: no-repeat;
   font-size: 30rpx;
   color: #ccc;
 }
+.control .bar_farther{
+  display: flex;
+  flex: auto;
+  height: 80rpx;
+  margin: 0 20rpx;
+}
 
 .control .bar{
-  flex: auto;
-  height: 4rpx;
+  align-self: center;
+  height: 6rpx;
+  width: 100%;
   background: #ccc;
-  margin:20rpx;
 }
  .control .bar .bar_child{
   width: 10%;
@@ -117,7 +148,7 @@ background-repeat: no-repeat;
  .download_btn{
    text-align: center;
    height: 90rpx;
-   margin: 40rpx 100rpx;
+   margin: 30rpx 120rpx 70rpx 120rpx;
    border-radius: 999rpx;
    background-color: #31c27c;
  }
