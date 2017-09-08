@@ -69,7 +69,7 @@ Page({
   bindRadio: function (ev){
     var radioid = ev.currentTarget.dataset.radioid;
     util.radioSong(radioid,function (data){
-      // console.log(data)
+      console.log(data)
       // 格式化
       var songlist = [];
       for (var i = 0; i < data.data.length; i++){
@@ -78,6 +78,7 @@ Page({
         obj.albumname = data.data[i].album.name;
         obj.singer = data.data[i].singer;
         obj.songmid = data.data[i].mid;
+        obj.songid = data.data[i].id;
         obj.songname = data.data[i].name;
         songlist[i] = obj;
       }

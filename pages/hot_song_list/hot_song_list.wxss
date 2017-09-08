@@ -56,7 +56,7 @@
 }
 .header_focus .play_btn{
   position: relative;
-  background-color: #31c27c;
+  background-color: #f05044;
   padding: 20rpx 0;
   margin: 45rpx 200rpx 0 200rpx;
   border-radius: 999rpx;
@@ -116,7 +116,7 @@
   color: #666;
 }
 .song_list .list_title .title_right{
-  color: #31c27c;
+  color: #f05044;
   display: flex;
 }
 .song_list .list_title .title_right .icon_like{

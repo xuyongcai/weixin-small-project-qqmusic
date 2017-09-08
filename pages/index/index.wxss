@@ -16,8 +16,8 @@
   padding: 25rpx 0;
 }
 .nav text.cur{
-  border-bottom: 3rpx solid #31c27c;
-  color:#31c27c; 
+  border-bottom: 3rpx solid #f05044;
+  color:#f05044; 
 }
 /* 轮播 */
  swiper{
@@ -225,18 +225,23 @@ swiper .slide-image{
   font-size: 36rpx;
 }
  .gg_box .gg .txt{
-   flex: auto;
+  flex: auto;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 } 
 .gg_box .gg .clock_icon{
+  flex: none;
   width: 40rpx;
   height: 40rpx;
   background-image: url("../../images/clock_ic.png");
   background-size:cover;
-  margin-right: 40rpx;
+  margin: 0 20rpx;
 }
 .gg_box .gg .delete_icon{
   width: 40rpx;
   height: 40rpx;
+  margin-left: 20rpx;
   position: relative;
 }
 .gg_box .gg .delete_icon::before {
@@ -262,5 +267,5 @@ swiper .slide-image{
   text-align: center;
   font-size: 27rpx;
   line-height: 60rpx;
-  color: #31c27c;
+  color: #f05044;
 }

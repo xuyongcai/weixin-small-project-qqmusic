@@ -40,7 +40,7 @@
             </view>
         </view>    
       </view>
-      <text class="footer">去客户端发现更多好音乐 ></text>
+      <text class="footer">爱音乐，爱小柴！</text>
     </view>
 
   </view>
@@ -65,7 +65,7 @@
 
       </view>
     </view>
-    <text class="footer">去客户端发现更多好音乐 ></text>
+    <text class="footer">爱音乐，爱小柴！</text>
   </view>
 
 <!-- 搜索 -->
@@ -88,7 +88,7 @@
 
     <view class="gg_box" hidden="{{startSearchOff || !searchform}}">
       <view class="gg" bindtap="tapThisLog" data-logid="{{index}}" wx:for="{{loglist}}" wx:key="vl">
-        <text class="clock_icon"></text>
+        <view class="clock_icon"></view>
         <view class="txt">{{item}}</view>
         <text class="delete_icon" data-logid="{{index}}" catchtap="removeThisLog"></text>
       </view>

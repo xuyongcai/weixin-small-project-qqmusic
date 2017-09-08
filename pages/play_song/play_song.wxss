@@ -1,3 +1,10 @@
+.container{
+   position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%; 
+  overflow: hidden;
+}
 /* 背景 */
  .bg_blur{
     position: absolute;
@@ -8,6 +15,7 @@
     width: 100%;
     overflow: hidden;     
 } 
+/*--------- 背景模糊，背景蒙板---------- */
  .bg_blur  .bg_blur_inner{
     position: absolute;
     top: 0;
@@ -32,19 +40,180 @@
     width: 100%;
     background-color: #000;
 }
-
-/* .main_box{
+/* -----------------歌曲列表弹窗------------ */
+.song_list_container{
+  position: absolute;
+  top: 0;
+  bottom: 0;  
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  overflow: hidden;
+  display: block;
+  transform: translateY(1600rpx);
+  transition:all 0.5s linear;
+}
+.song_list_container .close_list_btn{
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 500rpx;
+}
+.song_list_container .song_list_box{
+  position: absolute;
+  bottom: 0; 
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+.song_list_container .song_list_box .title{
+  padding: 0 25rpx;
+  line-height: 100rpx;
+  border-bottom: 2rpx solid #666;
+}
+.song_list_container .song_list_box .song_list{
+  height: 570rpx;
+  overflow: hidden;
+}
+.song_list_container .song_list_box .song_list .oSong{
+  position: relative;
+  border-bottom: 2rpx solid #666;
+  margin-left: 25rpx;
+  line-height: 80rpx;
+  overflow: hidden;
   display: flex;
-  flex-direction: column;
-} */
-/* 头部  */
+  justify-content: space-between
+}
+.song_list_container .song_list_box .song_list .oSong .list_play_icon{
+  flex: none;
+  position: relative;
+  margin: 0 50rpx;
+  align-self: center;
+  width: 45rpx;
+  height: 45rpx;
+  border-radius: 50%;
+  border: 2rpx solid #fff;
+}
+.song_list_container .song_list_box .song_list .oSong .list_play_icon::after{
+  position: absolute;
+  top: 50%;
+  margin:-10rpx 0 0 17rpx;
+  content: ""; 
+  display: block;  
+  border-color: transparent transparent transparent #fff;
+  border-width:10rpx 18rpx;
+  border-style: solid;
+  border-radius: 4rpx; 
+}
+.song_list_container .song_list_box .list_title{
+  color: #fff;
+  font-size: 34rpx;
+}
+.song_list_container .song_list_box .list_num{
+  color: #666;
+  font-size: 34rpx;
+}
+.song_list_container .song_list_box .txt{
+  color: #fff;
+  font-size: 32rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+}
+.song_list_container .song_list_box .small_txt{
+  flex: auto;
+  color: #666;
+  font-size: 26rpx;
+  margin-left: 10rpx; 
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+}
+.song_list_container .song_list_box .song_list .cur{
+  color:#f05044;
+} 
+.song_list_container .song_list_box .song_list .oSong .cur{
+  border-color: #f05044;
+}
+.song_list_container .song_list_box .song_list .oSong .cur::after{
+  border-color: transparent transparent transparent #f05044;
+} 
+
+/*----------------- 微信二维码弹窗 -----------------*/
+.weixin_box{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 10; 
+  display: none;
+}
+.weixin_box .weixin{
+  position: absolute;
+  left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+  width: 500rpx;
+  background-color: #fff;
+}
+.weixin_box .weixin .weixin_close{
+  position: absolute;
+  top: 30rpx;
+  right: 30rpx;
+  width: 50rpx;
+  height: 50rpx;
+  /* background-color: pink; */
+}
+.weixin_box .weixin .weixin_close::before {
+    position: absolute;
+    top: 22rpx;
+    width: 46rpx;
+    height: 2rpx;
+    content: "";
+    background: rgba(0,0,0,0.6);
+    transform: rotate(45deg);
+}
+.weixin_box .weixin .weixin_close::after {
+    position: absolute;
+    left: 22rpx;
+    width: 2rpx;
+    height: 46rpx;
+    content: "";
+    background: rgba(0,0,0,.6);
+    transform: rotate(45deg);
+}
+.weixin_box .weixin .title1{
+  display: block;
+  margin-left: 30rpx;
+  margin-top: 50rpx;
+  font-size: 60rpx;
+  color:#f05044; 
+}
+.weixin_box .weixin .title2{
+  display: block;
+  text-align: center;
+  font-size: 40rpx;
+  margin-top: 10rpx;
+}
+.weixin_box .weixin .weixin_pic{
+  width: 500rpx;
+  height: 500rpx;
+}
+
+/* -------------------  头部 -------------  */
+ .main_box{
+  position: relative;
+  z-index: 3; 
+} 
 .play_header{
   position: relative;
   width: 100%;
   display: flex;
   background: rgba(0, 0, 0, 0.5);
   padding: 30rpx 160rpx 30rpx 30rpx;
-  z-index: 3;
   box-sizing: border-box;
 }
 
@@ -98,24 +267,34 @@ background-repeat: no-repeat;
 
 }
 
-/* 中间 */
+/*-------------------- 中间 ----------------*/
 .main_box .lyric_box{
   /* background-color: pink; */
-  position: relative;
-  z-index: 3; 
   width: 100%;
-  height: 610rpx;
-  font-size: 24rpx;
-  color: #808080;
+  height: 590rpx;
+  margin-top: 20rpx;
+  overflow: hidden;
+} 
+.main_box .lyric_box text{
+  display: block;
+  font-size: 32rpx;
+  line-height: 86rpx;
+  color: rgba(255,255,255,0.6);
+  text-align: center; 
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+ .main_box .lyric_box .cur{
+  color:#f05044;
 } 
 
-/* 底部 */
+/*------------------ 底部 ---------------*/
 .play_footer{
   position: absolute;
   width: 100%;
   bottom: 0rpx;
   z-index: 4;
-  
 }
 .control{
   display: flex;
@@ -141,16 +320,16 @@ background-repeat: no-repeat;
   background: #ccc;
 }
  .control .bar .bar_child{
-  width: 10%;
+  width: 1%;
   height: 100%;
-  background: #31c27c;
+  background: #f05044;
  }
  .download_btn{
    text-align: center;
    height: 90rpx;
    margin: 30rpx 120rpx 70rpx 120rpx;
    border-radius: 999rpx;
-   background-color: #31c27c;
+   background-color: #f05044;
  }
  .download_btn .download_btn_txt{
   color: #fff;
