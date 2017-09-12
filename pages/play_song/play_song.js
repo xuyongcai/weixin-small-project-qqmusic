@@ -48,17 +48,23 @@ Page({
     })
     this.aotuPlayMusic(); //播放音乐
     this.getLyric(); 
+    this.interval();
     // console.log(songinfo)
 
+  },
+
   //进度条定时器
-  //总时长    当前的时间
-  //进度条的宽度  =  当前的时间  /  总时长  * 100
-  //快进 后退
+    //总时长    当前的时间
+    //进度条的宽度  =  当前的时间  /  总时长  * 100
+    //快进 后退
+  interval:function(){
+    var that = this;
+    var key = app.globalData.key;
+    var songlist = app.globalData.songlist;
     clearInterval(that.data.timer1);
     that.data.timer1 = setInterval(function () {
       wx.getBackgroundAudioPlayerState({
         success: function (res) {
-          // console.log(this)
           that.setData({
             duration: res.duration,     //总时长（单位：s）
             currentPosition: res.currentPosition,  //当前时长（s）
@@ -71,15 +77,16 @@ Page({
           if (!that.data.baroff) {
             that.setData({
               //进度条的宽度
-              width: res.currentPosition / res.duration * 100 + "%"
+              width: Math.ceil(res.currentPosition / res.duration * 100) + "%"
             })
           }
         },
       })
       // 跳下一首歌
-      if (parseInt(that.data.width) >= 100) {
+      if (that.data.currentPosition / that.data.duration >= 0.999) {
         clearTimeout(that.data.timer)
         that.data.timer = setTimeout(function () {
+          var key = app.globalData.key;
           key++;
           app.globalData.key = key;
           // console.log(key)
@@ -98,7 +105,7 @@ Page({
           })
           that.aotuPlayMusic();
           that.getLyric();
-        }, 1001)  //一定要大于外面定时器的时间（1000），不然会执行2次
+        }, 1100)  //一定要大于外面定时器的时间（1000），不然会执行2次
         // console.log(5)
         that.aotuPlayMusic();
       }
@@ -144,20 +151,19 @@ Page({
     var baroffsetLeft = ev.currentTarget.offsetLeft;
     var x = ev.touches[0].clientX - baroffsetLeft;
     var barlength = this.data.screenWidth - ev.currentTarget.offsetLeft * 2;
-    var w = x / barlength * 100;   //宽度百分比
+    var w = Math.ceil(x / barlength * 100);   //宽度百分比
     this.setData({
-      width: parseInt(w) + "%",
+      width: w + "%",
     })
     wx.seekBackgroundAudio({
-      position: parseInt(w / 100 * this.data.duration)
+      position: Math.ceil(w / 100 * this.data.duration)
     })
   },
 //进度条拖拽
   bartouchstart:function(ev){
-    var baroff = !this.data.baroff;
     var baroffsetLeft = ev.currentTarget.offsetLeft;
     this.setData({
-        baroff: baroff,
+        baroff: true,
         baroffsetLeft: baroffsetLeft
     })
   },
@@ -165,22 +171,21 @@ Page({
       var baroffsetLeft = this.data.baroffsetLeft;
       var x = ev.touches[0].clientX - baroffsetLeft;
       var barlength = this.data.screenWidth - baroffsetLeft * 2;
-      var w = x / barlength * 100;
+      var w = Math.ceil(x / barlength * 100);
       w >= 100 ? w = 100 : w;
       w <= 0 ? w = 0 : w;
       this.setData({
-        width: parseInt(w) + "%"
+        width: w + "%"
       })
   },
   bartouchend:function() {
-      var baroff = !this.data.baroff;
       var w = parseInt(this.data.width);
       // console.log(w)
       this.setData({
-        baroff: baroff
+        baroff: false
       })
       wx.seekBackgroundAudio({
-        position: parseInt(w / 100 * this.data.duration)
+        position: Math.ceil(w / 100 * this.data.duration)
       })
   },
   //---------------------- 歌词  --------------------------

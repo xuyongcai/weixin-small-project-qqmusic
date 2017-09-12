@@ -69,7 +69,7 @@ Page({
   bindRadio: function (ev){
     var radioid = ev.currentTarget.dataset.radioid;
     util.radioSong(radioid,function (data){
-      console.log(data)
+      // console.log(data)
       // 格式化
       var songlist = [];
       for (var i = 0; i < data.data.length; i++){
@@ -241,8 +241,24 @@ Page({
     })
     this.searchResult();
   },
-  onReachBottom:function(){
-
+  // 热门搜索热词点击事件 ( 红色 ) 
+  bindSpecialkey: function () {
+    var searchkey = this.data.special_key;
+    this.setData({
+      searchkey: searchkey,
+      searchform: true
+    })
+    this.searchResult();
+  },
+  // 热门搜索热词点击事件（无色）
+  bindHotKey: function (ev){
+    var index = ev.currentTarget.dataset.hkid;
+    var searchkey = this.data.hotkey[index].k;
+    this.setData({
+      searchkey: searchkey,
+      searchform: true
+    })
+    this.searchResult();
   }
 
 

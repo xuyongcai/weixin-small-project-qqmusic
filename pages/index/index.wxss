@@ -236,7 +236,7 @@ swiper .slide-image{
   height: 40rpx;
   background-image: url("../../images/clock_ic.png");
   background-size:cover;
-  margin: 0 20rpx;
+  margin-right:20rpx;
 }
 .gg_box .gg .delete_icon{
   width: 40rpx;

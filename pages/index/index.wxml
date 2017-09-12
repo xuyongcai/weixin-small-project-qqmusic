@@ -81,8 +81,8 @@
     <view class="hot_keys_box" hidden="{{startSearchOff || searchform}}">
       <text class="caption">热门搜索</text>
       <view class="hot_keys">
-        <view class="cur_hot_key">{{special_key}}</view>
-        <view class="hot_key" wx:for="{{hotkey}}" wx:key="hk">{{item.k}}</view>
+        <view class="cur_hot_key" bindtap="bindSpecialkey">{{special_key}}</view>
+        <view class="hot_key" bindtap="bindHotKey" data-hkid="{{index}}" wx:for="{{hotkey}}" wx:key="hk">{{item.k}}</view>
       </view>
     </view>
 
