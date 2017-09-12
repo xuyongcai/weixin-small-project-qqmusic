@@ -10,7 +10,8 @@ Page({
     searchform:false,
     searchlist: [],    //搜索结果列表
     searchid:1,
-    timer:null,
+    timer:null,        //搜索下拉过滤
+    timer1:null,
     loglist:[]         //曾经输入的值
 
   },
@@ -87,10 +88,13 @@ Page({
       app.globalData.key = 0;
       app.globalData.songlist = songlist;
     })
-
-    wx.navigateTo({
-      url: '../play_song/play_song?id=' + 0
-    })
+    //，如没加定时器，不知道怎么回事，手机第一次点击会没数据
+    clearTimeout(this.data.timer1);
+    this.data.timer1 = setTimeout(function(){
+      wx.navigateTo({
+        url: '../play_song/play_song?id=' + 0
+      })
+    },1000)
   },
 
 // 热门歌单点击事件

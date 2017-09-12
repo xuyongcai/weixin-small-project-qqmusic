@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    baroff:false,  //是否拖拽进度条
+    baroff:false,   //进度条是否拖拽
     imgoff:false,  //播放状态
     listoff: false,        //是否打开歌词列表
     weixinoff:false,      //二维码弹窗
@@ -163,8 +163,8 @@ Page({
   bartouchstart:function(ev){
     var baroffsetLeft = ev.currentTarget.offsetLeft;
     this.setData({
-        baroff: true,
-        baroffsetLeft: baroffsetLeft
+      baroff:true,
+      baroffsetLeft: baroffsetLeft
     })
   },
   bartouchmove: function (ev) {
@@ -181,11 +181,11 @@ Page({
   bartouchend:function() {
       var w = parseInt(this.data.width);
       // console.log(w)
-      this.setData({
-        baroff: false
-      })
       wx.seekBackgroundAudio({
         position: Math.ceil(w / 100 * this.data.duration)
+      })
+      this.setData({
+        baroff:false
       })
   },
   //---------------------- 歌词  --------------------------
@@ -313,29 +313,26 @@ Page({
     // console.log(ev)
     var startX = ev.touches[0].clientX;
     this.setData({
-      startX: startX
+      startX: startX,
     })
   },
   // 触摸移动时
   moveJump: function (ev) {
     var that = this;
-    clearTimeout(this.data.timer3);
-    this.data.timer3 = setTimeout(function(){   // 过滤
-      var endX = ev.touches[0].clientX;
-      that.setData({
-        endX: endX
-      })
-    },100)
+    var startX = this.data.startX;
+    var endX = ev.touches[0].clientX;
+    var moveX = endX - startX;
+    this.setData({
+      moveX: moveX
+    })
   },
   // 触摸移动结束
   endJump: function () {
-    var startX = this.data.startX;
-    var endX = this.data.endX;
-    var dis = endX - startX;
+    var moveX = this.data.moveX;
     var screenWidth = this.data.screenWidth;
     var songlist = this.data.songlist
     var key = app.globalData.key;
-    if (-dis > screenWidth / 2) {     //下一首
+    if (-moveX > screenWidth / 2) {     //下一首
       key++;
       key >= songlist.length ? key = 0 : "";
       app.globalData.key = key;
@@ -348,7 +345,7 @@ Page({
       })
       this.aotuPlayMusic();
       this.getLyric();
-    } else if (dis > screenWidth / 2) {   //上一首
+    } else if (moveX > screenWidth / 2) {   //上一首
       key--;
       key < 0 ? key = songlist.length - 1 : "";
       app.globalData.key = key;
@@ -362,6 +359,9 @@ Page({
       this.aotuPlayMusic();
       this.getLyric();
     }
+    this.setData({
+      moveX: 0,
+    })
   },
   // -------------------- 微信二维码 -----------------
   weixinOpen: function () {

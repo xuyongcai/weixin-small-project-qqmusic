@@ -13,7 +13,7 @@
       <view class="icon" bindtap="playMusic"  style="{{imgoff ? 'background-position-y:-338rpx' : 'background-position-y:-405rpx'}}"></view>
     </view>
     <!-- 歌词 -->
-    <view class="lyric_box" bindtouchstart="startJump" bindtouchmove="moveJump" bindtouchend="endJump">
+    <view style="left:{{moveX}}px;" class="lyric_box" bindtouchstart="startJump" bindtouchmove="moveJump" bindtouchend="endJump">
       <scroll-view scroll-y scroll-top="{{scrollTop}}" scroll-with-animation="true" style="height: 590rpx;">
         <block wx:for="{{lyric}}"  wx:key="lrc">
           <text class="{{currentPosition >= item.startTime && item.endTime >= currentPosition ? 'cur':''}}">{{item.clause}}</text>

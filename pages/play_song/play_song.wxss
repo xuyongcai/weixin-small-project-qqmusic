@@ -270,6 +270,7 @@ background-repeat: no-repeat;
 /*-------------------- 中间 ----------------*/
 .main_box .lyric_box{
   /* background-color: pink; */
+  position: relative;
   width: 100%;
   height: 590rpx;
   margin-top: 20rpx;
