@@ -47,7 +47,7 @@
     <view class="song_list_box">
       <view class="title">
         <view class="mode_btn">
-          <!-- <image src="#"></image> -->
+          <image src="../../images/circle_icon.png"></image> 
           <text class="list_title">列表循环</text>
           <text class="list_num">({{songlist.length}})</text>
         </view>

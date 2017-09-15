@@ -25,17 +25,19 @@ Page({
         headurl: data.cdlist[0].headurl,    // 头部小图片
         nickname: data.cdlist[0].nickname,   // 头部绰号
         songlist: data.cdlist[0].songlist,        //列表信息
-        desc: data.cdlist[0].desc      //歌单介绍
+        desc: data.cdlist[0].desc,     //歌单介绍
+        songids: data.cdlist[0].songids      //歌单列表ids
       })
-      // console.log(that.data.visitnum)
+      // console.log(that.data.songlist)
     })
   },
   // 列表点击事件
   bindSong:function(ev){
     var index = ev.currentTarget.dataset.index;
+    var songids = this.data.songids;
     // 储存数据
     app.globalData.key = index;
-    util.hotSongListDetail(function(data){
+    util.hotSongListDetail(songids,function(data){
       // console.log(data)
       app.globalData.songlist = data.data;
     })

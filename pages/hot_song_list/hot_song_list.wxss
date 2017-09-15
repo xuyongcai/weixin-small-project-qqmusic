@@ -121,9 +121,9 @@
 }
 .song_list .list_title .title_right .icon_like{
   flex:none;
-  margin-top: -30rpx;
-  width: 90rpx;
-  height: 90rpx;
+  margin-top: -20rpx;
+  width: 80rpx;
+  height: 80rpx;
 }
 .song_list .song_item{
   margin-top: 40rpx;

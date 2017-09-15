@@ -72,6 +72,24 @@
   line-height: 100rpx;
   border-bottom: 2rpx solid #666;
 }
+.song_list_container .song_list_box .title .mode_btn{
+  display: flex;
+}
+.song_list_container .song_list_box .title .mode_btn image{
+  flex: none;
+  height: 35rpx ;
+  width:35rpx ;
+  margin-right: 15rpx;
+  align-self: center;
+}
+.song_list_container .song_list_box .list_title{
+  color: #fff;
+  font-size: 34rpx;
+}
+.song_list_container .song_list_box .list_num{
+  color: #666;
+  font-size: 34rpx;
+}
 .song_list_container .song_list_box .song_list{
   height: 570rpx;
   overflow: hidden;
@@ -98,21 +116,13 @@
 .song_list_container .song_list_box .song_list .oSong .list_play_icon::after{
   position: absolute;
   top: 50%;
-  margin:-10rpx 0 0 17rpx;
+  margin:-9rpx 0 0 17rpx;
   content: ""; 
   display: block;  
   border-color: transparent transparent transparent #fff;
   border-width:10rpx 18rpx;
   border-style: solid;
   border-radius: 4rpx; 
-}
-.song_list_container .song_list_box .list_title{
-  color: #fff;
-  font-size: 34rpx;
-}
-.song_list_container .song_list_box .list_num{
-  color: #666;
-  font-size: 34rpx;
 }
 .song_list_container .song_list_box .txt{
   color: #fff;
@@ -218,6 +228,7 @@
 }
 
 .play_header .header_album{
+  flex: none;
   width: 160rpx;
   height: 160rpx;
   /* background-color: pink; */
@@ -241,6 +252,10 @@
   font-size: 38rpx;
   line-height: 57rpx;
   color: #fff;
+  /* 溢出省略 */
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
  .play_header .play_header_txt .singer_box{
   font-size: 30rpx;
