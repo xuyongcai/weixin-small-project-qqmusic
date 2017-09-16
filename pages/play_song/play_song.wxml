@@ -3,14 +3,14 @@
   <view class="main_box">
     <!-- 头部信息 -->
     <view class="play_header">
-      <image class="header_album" src="{{imgPath}}"></image>
+      <image class="header_album" src='../../images/icon-music.png' src="{{imgPath}}"></image>
       <view class="play_header_txt">
         <text class="song_name">{{songinfo.songname}}</text>
         <view class="singer_box">
           <text class="singer" wx:for="{{songinfo.singer}}" wx:key="sis">{{item.name}}{{index<songinfo.singer.length-1?" / ":""}}</text>
         </view>
       </view>
-      <view class="icon" bindtap="playMusic"  style="{{imgoff ? 'background-position-y:-338rpx' : 'background-position-y:-405rpx'}}"></view>
+      <image class="icon" bindtap="playMusic" src="{{imgoff ?'../../images/play_icon.png': '../../images/pause_icon.png'}}" ></image>
     </view>
     <!-- 歌词 -->
     <view style="left:{{moveX}}px;" class="lyric_box" bindtouchstart="startJump" bindtouchmove="moveJump" bindtouchend="endJump">
@@ -23,8 +23,8 @@
   </view>
 
   <view class="play_footer">
-    <view class="icon_list icon" catchtap="openListBtn" ></view>
-    <view class="icon_like icon" bindtap="weixinOpen"></view>
+    <image src='../../images/list_icon.png' class="icon_list icon" catchtap="openListBtn" ></image>
+    <image src='../../images/like_icon.png' class="icon_like icon" bindtap="weixinOpen"></image>
     <view class="control">
       <view class="start time">{{currentmin<10?'0':''}}{{currentmin}}:{{currentsec<10?'0':''}}{{currentsec}}</view>
       <view class="bar_farther"  bindtap="bindtap" bindtouchmove="bartouchmove" bindtouchstart="bartouchstart" bindtouchend="bartouchend">

@@ -10,8 +10,11 @@
 }
 .header_focus .logo{
   height: 95rpx;
-  opacity: 0.6;
-  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #f05044;
+  font-size: 36rpx;
+  line-height: 95rpx;
+  text-align: center;
 }
 .header_focus .song_info{
   margin: 30rpx 40rpx 0 30rpx;
@@ -83,16 +86,13 @@
   overflow: hidden;
 }
 .bg_blur .bg_blur_inner{
-  background-image:url("https://p.qpic.cn/music_cover/hVUsfUFG2DV466URqw7PT7X66OknPIhic2mKDgicawN4qThIR7yhYY1w/600?n=1");
   position: absolute;
   top: 0;
   bottom: 0;
   width: 100%;
-  background-size: cover;
-  background-position: bottom center;
   /* 模糊 */
-  filter: blur(30rpx);
-  transform: scale(1.15); 
+  filter: blur(20rpx);
+   transform: scale(1.30);  
 }
 .bg_mask{
   position: absolute;

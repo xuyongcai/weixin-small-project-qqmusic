@@ -88,7 +88,7 @@
 
     <view class="gg_box" hidden="{{startSearchOff || !searchform}}">
       <view class="gg" bindtap="tapThisLog" data-logid="{{index}}" wx:for="{{loglist}}" wx:key="vl">
-        <view class="clock_icon"></view>
+        <image src='../../images/clock_ic.png' class="clock_icon"></image>
         <view class="txt">{{item}}</view>
         <text class="delete_icon" data-logid="{{index}}" catchtap="removeThisLog"></text>
       </view>
@@ -98,7 +98,7 @@
   <!-- 搜索展示结果 -->
      <scroll-view bindscrolltolower="scrolltolower" hidden="{{!startSearchOff}}" scroll-y="true" style="height: 990rpx;" class="result_box">
       <view class="result_item" bindtap="resultDetail" data-resultid="{{index}}" wx:for="{{searchlist}}" wx:key="searl">
-         <view class="result_icon"></view>
+         <image src='../../images/icon-music.png' class="result_icon"></image>
          <view class="result_info">
            <text class="song_name">{{item.songname}}</text>
            <text class="singer">{{item.singer[0].name}}</text>

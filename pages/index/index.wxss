@@ -191,17 +191,20 @@ swiper .slide-image{
   display: flex;
 }
 .result_box .result_item .result_icon{
+  flex: none;
   width: 50rpx;
   height: 50rpx;
-  /* background-color: pink; */
-  background-image: url("../../images/icon-music.png");
-  background-repeat: no-repeat;
-  background-size:100%;
   align-self: center;
   margin-right: 30rpx;
 }
+.result_box .result_item .result_info{
+  overflow: hidden;
+}
 .result_box .result_item .result_info text{
   display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .result_box .result_item .result_info .song_name{
   color: #000;
@@ -234,8 +237,6 @@ swiper .slide-image{
   flex: none;
   width: 40rpx;
   height: 40rpx;
-  background-image: url("../../images/clock_ic.png");
-  background-size:cover;
   margin-right:20rpx;
 }
 .gg_box .gg .delete_icon{

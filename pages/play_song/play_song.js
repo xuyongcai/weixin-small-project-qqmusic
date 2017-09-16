@@ -105,7 +105,7 @@ Page({
           })
           that.aotuPlayMusic();
           that.getLyric();
-        }, 1100)  //一定要大于外面定时器的时间（1000），不然会执行2次
+        }, 1300)  //一定要大于外面定时器的时间（1000），不然会执行2次
         // console.log(5)
         that.aotuPlayMusic();
       }

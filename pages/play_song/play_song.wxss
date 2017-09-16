@@ -231,11 +231,6 @@
   flex: none;
   width: 160rpx;
   height: 160rpx;
-  /* background-color: pink; */
-  /* 默认图片 */
-  background-image: url("../../images/icon-music.png");
-  background-size: 100%;
-  background-repeat: no-repeat;
 }
  .play_header .play_header_txt{
   flex: auto;
@@ -274,11 +269,6 @@ top:50%;
 margin-top:-45rpx;
 border-radius:50%;
 border:4rpx solid #fff;
-background-image:url("../../images/sprite_play.png");
-/*点击后  y:-338rpx */
-background-position:34rpx -405rpx;
-background-size:110%;
-background-repeat: no-repeat;
 
 }
 
@@ -353,26 +343,14 @@ background-repeat: no-repeat;
 }
 .play_footer .icon{
   position: absolute;
-  width: 80rpx;
-  height: 80rpx;
-  /* background-color: green; */
+  width: 55rpx;
+  height: 50rpx;
 }
 .play_footer .icon_list{
   left:50rpx;
   top:-100rpx;
-  background-image:url("../../images/sprite_play.png");
-  background-position:13rpx -507rpx;
-  background-size:110%;
-  background-repeat: no-repeat;
-}
+} 
 .play_footer .icon_like{
   top:-100rpx;
   right:50rpx;
-  background-image:url("../../images/sprite_play.png");
-  /* 点击后  y：-42 */
-  background-position:13rpx 15rpx;
-  background-size:110%;
-  background-repeat: no-repeat;
-
-}
-
+} 
